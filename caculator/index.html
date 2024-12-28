@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Calculator</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css"> <!-- 引入外部样式表 -->
+</head>
+
+<body>
+  <div id="app">
+    <div class="calculator-container">
+      <div class="display">
+        <input type="text" v-model="display" readonly>
+      </div>
+      <div class="buttons">
+        <button class="btn number-btn" @click="append('7')">7</button>
+        <button class="btn number-btn" @click="append('8')">8</button>
+        <button class="btn number-btn" @click="append('9')">9</button>
+        <button class="btn operator-btn" @click="operation('*')">×</button>
+        <button class="btn number-btn" @click="append('4')">4</button>
+        <button class="btn number-btn" @click="append('5')">5</button>
+        <button class="btn number-btn" @click="append('6')">6</button>
+        <button class="btn operator-btn" @click="operation('-')">-</button>
+        <button class="btn number-btn" @click="append('1')">1</button>
+        <button class="btn number-btn" @click="append('2')">2</button>
+        <button class="btn number-btn" @click="append('3')">3</button>
+        <button class="btn operator-btn" @click="operation('+')">+</button>
+        <button class="btn number-btn" @click="append('0')">0</button>
+        <button class="btn clear-btn" @click="clear">C</button>
+        <button class="btn equal-btn" @click="calculate">=</button>
+        <button class="btn operator-btn" @click="operation('/')">÷</button>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

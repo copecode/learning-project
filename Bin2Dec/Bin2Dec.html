@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin2Dec</title>
+    <style>
+      div {
+        max-width: 400px;
+        margin: 0 auto;
+        border: 1px solid;
+      }
+      input {
+        display: block;
+        width: 80%;
+        margin:0 auto;
+        text-align: center;
+      }
+      p {
+        display: block;
+        width: 80%;
+        margin:0 auto;
+        text-align: center;
+      }
+      input:invalid {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="transer" id = "ggg">
+      <input type="text" pattern="[01]{0,8}" id="ipt" value="请输入8位二进制数字"/>
+      <p class="result"></p>
+    </div>
+
+    <script>
+      const input = document.querySelector("div input");
+      const p = document.querySelector("p.result");
+
+      // 定义一个函数用来提示判断输入内容是否合法
+      function checkInput() {}
+
+      //定义二进制转换为十进制的函数
+      function Bin2Dec(bin) {
+        return bin
+          .split("")
+          .reverse()
+          .map(Number)
+          .reduce((acc, cur, idx) => {
+            //    console.log(acc,cur,idx)
+            return acc + cur * 2 ** idx;
+          }, 0);
+      }
+
+      input.addEventListener("input", () => {
+        p.textContent = Bin2Dec(input.value);
+      });
+    </script>
+  </body>
+</html>

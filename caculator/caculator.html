@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+    <script type="text/javascript" src="../vue.js"></script>
+    <style>
+      #root {
+        width: calc((1 / 1.618) * 80vh);
+        height: 80vh;
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1%;
+      }
+      #resultArea {
+        grid-column: 1/5;
+      }
+      .funcC {
+        grid-column: 1/3;
+      }
+      .funcAC {
+        grid-column: 3/5;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <textarea name="" id="resultArea" :value = "resultNum"></textarea>
+      <button class="func funcC" class="clear">C</button>
+      <button class="func funcAC" class="ClearAll">AC</button>
+
+      <button class="num num1" @click="ClickNum">1</button>
+      <button class="num num2" @click="ClickNum">2</button>
+      <button class="num num3" @click="ClickNum">3</button>
+      <button class="symbolsDiv" @click="addsym" value="/">÷</button>
+      <button class="num num4" @click="ClickNum">4</button>
+      <button class="num num5" @click="ClickNum">5</button>
+      <button class="num num6" @click="ClickNum">6</button>
+      <button class="symbol symbolsSub" @click="addsym" value="-">-</button>
+      <button class="num num7" @click="ClickNum">7</button>
+      <button class="num num8" @click="ClickNum">8</button>
+      <button class="num num9" @click="ClickNum">9</button>
+      <button class="symbol symbolsMul" @click="addsym" value="*">×</button>
+      <button class="num numdot" @click="ClickNum">.</button>
+      <button class="num num0" @click="ClickNum">0</button>
+      <button class="symbol symbolsAdd" @click="addsym" value="+">+</button>
+
+      <button class="symbolsEqual" @click="calc" value="equal">=</button>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false;
+
+      const vm = new Vue({
+        el: "#root",
+        data() {
+          return {
+            //用于存放输入+-*/运算符之前的输入
+            NumBefore: [],
+            //用于存放输入+-*/运算符之后的输入
+            NumAfter: [],
+            //用于存放历史记录
+            HisResult: [{}],
+            ClickSymbol: false,
+            symbol: "+",
+            resultNum: null
+          };
+        },
+        methods: {
+          //按下数字按键
+          ClickNum(event) {
+
+            function numGuard(numArray) {
+              //输入合法性检测
+              if (
+                //用户第一个输入的数字是0然后一直输入0只算一个0,后续的0 不加入数组
+                (numArray.length === 1) &
+                (numArray[0] === "0") &
+                (event.target.textContent === "0")
+              ) {
+                null;
+              } else if (
+                //用户第一个输入的数字是0然后输入数字，则把0丢掉然后把数字加入数组
+                (numArray.length === 1) &
+                (numArray[0] === "0") &
+                (event.target.textContent !== ".") &
+                (event.target.textContent !== "0")
+              ) {
+                numArray[0] = event.target.textContent;
+              } else if (
+                //用户第一个输入小数点，自动往前补一个0
+                (numArray.length === 0) &
+                (event.target.textContent === ".")
+              ) {
+                //忽略什么也不做
+                numArray.push("0");
+                numArray.push(event.target.textContent);
+              } else if (
+                //用户连续输入小数点，只算一个小数点
+                (numArray[numArray.length - 1] === ".") &
+                (event.target.textContent === ".")
+              ) {
+                //忽略什么也不做
+                null;
+              } else if (
+                //用户已经输入小数点了，再输入提示
+                (numArray[numArray.length - 1] !== ".") &
+                (numArray.indexOf(".") > -1) &
+                (event.target.textContent === ".")
+              ) {
+                //提示用户
+                alert("已经输入过小数点了，请检查输入是否有误");
+              } else {
+                numArray.push(event.target.textContent);
+              }
+            }
+
+            !this.ClickSymbol
+              ? //没有按加减乘除时存在NumBefore数组中
+                numGuard(this.NumBefore)
+              : numGuard(this.NumAfter);
+            // console.log(this.NumBefore);
+            // console.log(this.generateNum(this.NumBefore));
+            // console.log(this.NumAfter);
+            // console.log(this.generateNum(this.NumAfter));
+          },
+          //按下运算符
+          addsym(event) {
+            //如果没按数字直接按运算符则视为无效
+            if (
+              this.NumBefore.filter((item) => {
+                return item !== ".";
+              }).length > 0
+            ) {
+              this.ClickSymbol = true;
+              this.symbol = event.target.value;
+            }
+            console.log(this.ClickSymbol);
+          },
+          generateNum(numArray) {
+            //计算右移位数
+            let position =
+              numArray.indexOf(".") === -1
+                ? //没有小数点则不用右移
+                  0
+                : //有小数点则右移动小数点后位数
+                  numArray.length - (numArray.indexOf(".") + 1);
+
+            //一个没有小数点的数组
+            const noDotArray = numArray.filter((item) => item !== ".");
+
+            return noDotArray
+              .reverse()
+              .map(Number)
+              .reduce((acc, cur, idx) => {
+                return acc + cur * 10 ** (idx - position);
+              }, 0);
+          },
+          //按下等于号
+          calc() {
+            //把数组转为数字
+            const num1 = this.generateNum(this.NumBefore)
+            const num2 = this.generateNum(this.NumAfter)
+            switch(this.symbol){
+                case '+': this.resultNum = num1 + num2;break
+                case '-': this.resultNum = num1 - num2;break
+                case '*': this.resultNum = num1 * num2;break
+                case '/': this.resultNum = num1 / num2;break
+            }
+            this.HisResult.push(this.resultNum)
+            
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

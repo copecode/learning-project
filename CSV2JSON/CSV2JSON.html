@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV2JSON</title>
+    <script type="text/javascript" src="../vue.js"></script>
+
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="root">
+        <textarea name="output" v-model="inputText" placeholder="input as CSV"></textarea>
+        <button @click="trans">CSV2JSON</button>
+        <textarea name="output"  :value="outputText"></textarea>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el:"#root",
+            data:{
+            inputText:"",
+            outputText:"Output Here"
+            }
+        ,
+            methods: {
+           
+trans() { let csvStr = this.inputText;
+                    let rows = [];
+                    let cols = [];
+                    let json = {};
+                    let jsons = [];
+                    const reg1 = /\"\"/g
+                    const reg = /[^\n]+/g;
+                    //获取到每一行
+                    while (row = reg.exec(csvStr)){
+                        rows.push(row)
+                    };
+                    cols = rows.shift()[0].split(",");
+                    rows = rows.map((a,b,c)=>a[0].split(","));
+                    for (let row of rows) {
+                         json = {}
+                         for ( i = 0 ;i<cols.length;i++ ) {
+                             json[cols[i]] = row[i]
+                         }
+                         jsons.push(json)
+                    }
+                    this.outputText = JSON.stringify( jsons)
+                }
+               
+
+        }
+    }
+    )
+
+    </script>
+</body>
+</html>
+
