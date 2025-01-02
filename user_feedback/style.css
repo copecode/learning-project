@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'Bodoni Moda';
+  src: url('7a0ca62cc48ff3627facc9422ab634e6.ttf') format('truetype'), url('7a0ca62cc48ff3627facc9422ab634e6.ttf') format('woff'), url('7a0ca62cc48ff3627facc9422ab634e6.ttf') format('woff2');
+}
+html {
+  font-size: 16px;
+  background-color: #eef1f3;
+}
+.title {
+  color: #627279;
+  font-family: 'Bodoni Moda', serif;
+}
+.title::first-letter {
+  text-transform: uppercase;
+}
+.container {
+  width: 100%;
+  max-width: 46rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: #7f8c8d;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.container::first-letter {
+  text-transform: uppercase;
+}
+.container > * {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #7f8c8d;
+  text-align: center;
+  align-content: center;
+}
+.sugess textarea {
+  box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  min-height: 8rem;
+  background-color: #f7f9fa;
+  border-radius: 2rem;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.1rem #7f8c8d;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #7f8c8d;
+  outline: none;
+  transition-duration: 0.31s;
+  transition-property: background-color, translate, box-shadow;
+}
+.sugess textarea:focus {
+  background-color: white;
+  translate: 0 -0.25rem;
+  box-shadow: 0.125rem 0.125rem 0.1rem 0.05rem #7f8c8d;
+}
+.checkbox {
+  text-align: left;
+  margin-top: 0.3rem;
+  padding-left: 2rem;
+}
+.checkbox a {
+  color: #ff69b4;
+}
+.checkbox input[type="checkbox"] {
+  accent-color: #ff69b4;
+}
+.faces {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  gap: 2.75rem;
+  padding: 0;
+  margin: 4rem auto;
+}
+.face {
+  width: 4rem;
+  display: grid;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+.face :nth-child(1):hover,
+.face :nth-child(1):active {
+  filter: drop-shadow(0.25rem 0.25rem 0rem #0001);
+}
+.face :nth-child(1).selected {
+  filter: drop-shadow(0.25rem 0.25rem 0rem #0001);
+}
+.face *:nth-child(1) {
+  font-size: 2.875rem;
+  filter: grayscale(100%) drop-shadow(0.25rem 0.25rem 0rem #0001);
+  transition: filter 1s;
+  transition-timing-function: ease-in;
+}
+.btns {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  height: 4rem;
+}
+.btns > * {
+  width: 10rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+}
+.btns :nth-child(1) {
+  background-color: #ff69b4;
+  color: #e0e2e4;
+}
+.btns :nth-child(2) {
+  background-color: #eef1f3;
+  color: #7f8c8d;
+}
+p.sugess {
+  margin: 0.3rem auto;
+}
