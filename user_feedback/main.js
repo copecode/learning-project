@@ -10,6 +10,8 @@ for (let face of faces  ) {
             selectface.classList.remove('selected')
             }
             this.firstChild.setAttribute('class','selected')
+        } else {
+            this.firstChild.classList.remove('selected')
         }
     })
 }

@@ -142,23 +142,39 @@ html {
     gap: 2rem;
     height: 4rem;
 
-    >* {
-        width: 10rem;
-        border-radius: 2rem;
-        font-size: 1rem;
-    }
-
-    :nth-child(1) {
-        background-color: @main-color;
-        color: @shadow-color;
-    }
-
-    :nth-child(2) {
-        background-color: @bg-color;
-        color: @para-font-color;
-    }
 }
 
 p.sugess {
     margin: 0.3rem auto;
+}
+
+.btn.cancel {
+    width: 10rem;
+    background-color: @bg-color;
+    color: @para-font-color;
+    border-radius: 2rem;
+    font-size: 1rem;
+    border:none;
+    transition-duration: 0.3s;
+    transition-property: background-color,box-shadow,translate;
+    &:hover{
+        background-color: @textarea-bgcolor;
+        translate: 0 -0.1rem 0.1rem;
+        box-shadow: 0.1rem 0.1rem 0.1rem @para-font-color;
+        transition-duration: 0.3s;
+        transition-property: box-shadow;
+    }
+    &:active{
+        box-shadow: 0.05rem 0.05rem 0.05rem inset
+    }
+}
+.btn.submit{
+    width: 10rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    background-color: @main-color;
+    color: @shadow-color;
+    box-shadow: 0.1rem 0.1rem 0.1rem @para-font-color;
+    border:none;
+    
 }
