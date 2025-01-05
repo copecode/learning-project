@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @keyframes into {
+            100% {
+                opacity: 1;
+                translate: 0rem 0rem;
+            }
+        }
+        body{
+            font-family:'Courier New', Courier, monospace;
+            color:#825d50;
+            min-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(ellipse at 10% 30%, #64cce6, transparent),
+            radial-gradient(ellipse at 90% 70%, #6495ED, transparent);
+
+        }
+        .main  {
+            width: 100%;
+            max-width: 36rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            &> * {text-align: center;
+            }
+            h1{
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.4s;
+            }
+            p{
+                font-family:Arial, Helvetica, sans-serif;
+                line-height: 1.6rem;
+                margin-top:1.25rem ;
+                margin-bottom: 1.25rem;
+
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.5s;
+
+            }
+            .login{
+                box-sizing: border-box;
+                width: 100%;
+                height: 2.5rem;
+                margin:3rem auto;
+                position: relative;
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.6s;
+                input{
+                    color: #825d50;
+                    width:100%;
+                    height: 100%;
+                    border-radius: 1.25rem;
+                    border: none;
+                    padding-left: 1rem;
+                    &:focus{
+                        outline-color:#6495ED;
+                    }
+                }
+                button{
+
+                    position:absolute;
+                    height: 1.75rem;
+                    width:1.75rem;
+                    border-radius: 50%;
+                    border: none;
+                    right: 0.25rem;
+                    top:50%;
+                    translate: 0 -50%;
+                    transition: height,width,box-shadow 0.2s ;
+                    
+                    &:hover{
+                        cursor: pointer;
+                        height: 1.8rem;
+                        width:1.8rem;
+                        box-shadow:0rem 0rem 0.18rem #e66465;
+                        transition: height,width,box-shadow 0.3s ;
+                    }
+                    &:active{
+                        height: 1.75rem;
+                        width:1.75rem;
+                        box-shadow:0rem 0rem 0.175rem #e66465 ;
+                    }
+
+                }
+            }
+        }
+        & .imgs .header{
+            position: relative;
+            display: inline-block;
+            height: 3.75rem;
+            width: 3.75rem;
+            border-radius: 50%;
+            overflow: hidden;
+
+            &:hover::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                left:50%;
+                translate: -50% -50%;
+                width: 90%;
+                height: 90%;
+                border-radius: 50%;
+                border: 0.1rem solid white;
+                
+            }
+            & img{
+                max-width: 100%;
+                object-fit:contain;
+            }
+
+            &:nth-child(1){
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.6s;
+            }
+            &:nth-child(2){
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.7s;
+            }
+            &:nth-child(3){
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.8s;
+            }
+            &:nth-child(4){
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 0.9s;
+            }
+            &:nth-child(5){
+                translate: -4.6rem 2.4rem;
+            opacity: 0;
+            animation: into  0.8s ease forwards;
+            animation-delay: 1s;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>已经一起工作了吗？</h1>
+        <p>登录您的帐户并与您的团队成员联系！</p>
+        <div class="login">
+            <input type="text" placeholder="输入邮箱...">
+            <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+        <div class="imgs">
+        <div class="header"><img  src="http://cdn.u2.huluxia.com/g3/M00/32/CF/wKgBOVwOEKKAJLBoAAAYMOwzVfw41.jpeg" alt=""> </div>
+        <div class="header"><img  src="http://cdn.u2.huluxia.com/g3/M03/32/C4/wKgBOVwODHSAI0oWAAEZ0lDzoxk32.jpeg" alt=""> </div>
+        <div class="header"><img  src="http://cdn.u2.huluxia.com/g3/M03/31/D3/wKgBOVwNbDaAJQdzAAI8RMRXP_g62.jpeg" alt=""> </div>
+        <div class="header"><img  src="http://cdn.u2.huluxia.com/g3/M00/26/8B/wKgBOVwJCSuALA_3AAErQF_RnAs074.jpg" alt=""> </div>
+        <div class="header"><img  src="http://cdn.u2.huluxia.com/g3/M00/2A/0E/wKgBOVwKdleAdY7qAAD4lqe1Xas919.jpg" alt=""> </div>
+    </div>
+    </div>
+
+</body>
+</html>

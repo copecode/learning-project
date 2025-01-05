@@ -103,6 +103,7 @@ p.sugess {
   margin: 0.3rem auto;
 }
 .btn.cancel {
+  position: relative;
   width: 10rem;
   background-color: #eef1f3;
   color: #7f8c8d;
@@ -111,6 +112,7 @@ p.sugess {
   border: none;
   transition-duration: 0.3s;
   transition-property: background-color, box-shadow, translate;
+  cursor: pointer;
 }
 .btn.cancel:hover {
   background-color: #f7f9fa;
@@ -123,6 +125,7 @@ p.sugess {
   box-shadow: 0.05rem 0.05rem 0.05rem inset;
 }
 .btn.submit {
+  position: relative;
   width: 10rem;
   border-radius: 2rem;
   font-size: 1rem;
@@ -130,4 +133,31 @@ p.sugess {
   color: #e0e2e4;
   box-shadow: 0.1rem 0.1rem 0.1rem #7f8c8d;
   border: none;
+  transition-duration: 0.3s;
+  transition-property: background-color, box-shadow, translate;
+  overflow: hidden;
+  cursor: pointer;
 }
+.btn.submit:hover {
+  background-color: #fc68b2;
+  translate: 0 -0.1rem 0.1rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem #7f8c8d;
+  transition-duration: 0.3s;
+  transition-property: box-shadow;
+}
+.btn.submit:active {
+  box-shadow: 0.05rem 0.05rem 0.05rem inset;
+}
+.btn.submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  background: linear-gradient(75deg, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 65%);
+  translate: -100% 0;
+  transition: translate 0.64s ease;
+}
+.btn.submit:hover::before {
+  translate: 100% 0;
+}
+

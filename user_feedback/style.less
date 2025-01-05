@@ -149,6 +149,7 @@ p.sugess {
 }
 
 .btn.cancel {
+    position: relative;
     width: 10rem;
     background-color: @bg-color;
     color: @para-font-color;
@@ -157,6 +158,8 @@ p.sugess {
     border:none;
     transition-duration: 0.3s;
     transition-property: background-color,box-shadow,translate;
+    cursor: pointer;
+
     &:hover{
         background-color: @textarea-bgcolor;
         translate: 0 -0.1rem 0.1rem;
@@ -167,8 +170,10 @@ p.sugess {
     &:active{
         box-shadow: 0.05rem 0.05rem 0.05rem inset
     }
+
 }
 .btn.submit{
+    position:relative;
     width: 10rem;
     border-radius: 2rem;
     font-size: 1rem;
@@ -176,5 +181,38 @@ p.sugess {
     color: @shadow-color;
     box-shadow: 0.1rem 0.1rem 0.1rem @para-font-color;
     border:none;
-    
+    transition-duration: 0.3s;
+    transition-property: background-color,box-shadow,translate;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover{
+        background-color: 0.99*@main-color;
+        translate: 0 -0.1rem 0.1rem;
+        box-shadow: 0.1rem 0.1rem 0.1rem @para-font-color;
+        transition-duration: 0.3s;
+        transition-property: box-shadow;
+    }
+    &:active{
+        box-shadow: 0.05rem 0.05rem 0.05rem inset
+    }
+    &::before{
+        content: '';
+        position:absolute;
+        inset:0;
+        border-radius: 2rem;
+        background: linear-gradient(
+            75deg,
+            rgba(255,255,255,0) 35%,
+            rgba(255,255,255,0.2) 50%,
+            rgba(255,255,255,0) 65%
+        );
+        translate: -100% 0;
+        transition: translate 0.64s ease;
+    }
+    &:hover::before{
+        translate: 100% 0;
+
+    }
 }
+
