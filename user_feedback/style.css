@@ -61,6 +61,7 @@ html {
 }
 .checkbox a {
   color: #ff69b4;
+  text-decoration: none;
 }
 .checkbox input[type="checkbox"] {
   accent-color: #ff69b4;
@@ -74,7 +75,7 @@ html {
   margin: 4rem auto;
 }
 .face {
-  width: 4rem;
+  width: 20rem;
   display: grid;
   text-transform: uppercase;
   font-size: 1rem;
@@ -87,7 +88,7 @@ html {
   filter: drop-shadow(0.25rem 0.25rem 0rem #0001);
 }
 .face *:nth-child(1) {
-  font-size: 2.875rem;
+  font-size: 0.875rem;
   filter: grayscale(100%) drop-shadow(0.25rem 0.25rem 0rem #0001);
   transition: filter 1s;
   transition-timing-function: ease-in;
@@ -160,4 +161,3 @@ p.sugess {
 .btn.submit:hover::before {
   translate: 100% 0;
 }
-
