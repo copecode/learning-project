@@ -1,36 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Christmas Promo</title>
-</head>
-<style>
+    <link href="https://api.fontshare.com/v2/css?f[]=quicksand@500&f[]=britney@400&display=swap" rel="stylesheet">
+  </head>
+  <style>
     * {
-        margin:0;
-        padding: 0;
-        box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    
-</style>
-<body>
-    <div class="contain">
-        <div class="mask">
-            <div calss="text"></div>
-            <div class="progress_bar"></div>
-        </div>
+    body {
+        font-family: 'Quicksand', sans-serif;
 
-        <div class="card">
-            <div class="tree">
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="1157.000000pt" height="1280.000000pt" viewBox="0 0 1157.000000 1280.000000"
-                preserveAspectRatio="xMidYMid meet">
-               <metadata>
-               Created by potrace 1.15, written by Peter Selinger 2001-2017
-               </metadata>
-               <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-               fill="#344bcb" stroke="none">
-               <path d="M5330 12245 c-284 -52 -593 -227 -935 -529 -44 -39 -157 -144 -252
+      width: 100vw;
+      min-height: 100vh;
+      /* 适配ipad ipad 100vh会把导航栏宽度算进去 出现滚动条 */
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(234, 238, 245);
+    }
+    .contain {
+      position: relative;
+
+      width: 100%;
+      max-width: 28rem;
+      margin-block: 2rem;
+      padding-block: 2rem;
+      padding-inline: 4rem;
+      border-radius: 2rem;
+      background-color: white;
+      color: rgb(30, 27, 75);
+      box-shadow: 2px 2px 1px rgba(211, 211, 211, 0.852),
+        inset 1px 1px 1px lightgray;
+    }
+    .contain  {
+      translate: -6rem 3rem;
+      opacity: 0;
+      transition: translate 0.8s ease-in-out ,opacity 0.8s ease-in-out ;
+    }
+    .contain.display {
+      translate: 0 0;
+      opacity: 1;
+
+    }
+    .contain > .card > * {
+      translate: -6rem 3rem;
+      transition: translate 0.8s   ease-in-out;
+    }
+    .contain.display >.card >  * {
+      translate: 0 0;
+
+    }
+    .refresh {
+      height: 1.875rem;
+      width: 1.875rem;
+      color: black;
+      position: absolute;
+      top: calc(1.875rem / 2);
+      right: calc(1.875rem / 2);
+      cursor: pointer;
+      transition: transform 0.1s 0.05s ease-in-out ;
+    }
+    .refresh:hover {
+      transform: rotate(45deg);
+      /* transition: transform 0.3s 0.05s ; */
+    }
+    .refresh:active {
+      transform: rotate(720deg);
+    }
+
+    .tree {
+      height: 4rem;
+    }
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      stroke: black;
+      stroke-width: 0.5rem;
+    }
+    .mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: rgb(234, 238, 245);
+      align-items: center;
+      z-index: 999;
+      font-size: 1.875rem;
+      font-weight: bold;
+      opacity: 1;
+      transition: opacity 0.8s  ease-in-out;
+      color: rgb(30, 27, 75);
+
+    }
+    .mask.hide {
+      opacity: 0;
+      pointer-events: none;
+
+    }
+    .mask .bar {
+      position: absolute;
+      width: 18rem;
+      height: 0.5rem;
+      background-color: lightgray;
+      left: 50%;
+      top: 50%;
+      translate: -50% 3rem;
+      border-radius: 0.25rem;
+    }
+    .mask .bar .progress_bar {
+      height: 100%;
+      width: 0%;
+      background-color:  rgb(30, 27, 75);
+      border-radius: 0.25rem;
+    }
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .card > * {
+      margin-block: 0.5em;
+      text-align: center;
+    }
+    .title {
+      font-size: 1.875rem;
+      font-family: 'Britney', cursive;
+
+    }
+    .msg {
+      font-size: 0.875rem;
+      font-weight: lighter;
+    }
+    .msg.promo {
+      font-size: 1rem;
+      color: rgb(251, 146, 60);
+      font-weight: lighter;
+    }
+    button {
+      font-size: 0.875;
+      padding-inline: 2rem;
+      padding-block: 1rem;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      background-color: rgb(30, 27, 75);
+      color: white;
+      cursor: pointer;
+    }
+    .mask > .text > .dot {
+      height: 0.25rem;
+      width: 0.25rem;
+      background-color: rgb(30, 27, 75);
+      display: inline-block;
+    }
+    .mask > .text > .dot:nth-child(1) {
+      animation: wave 0.9s 0s ease-in-out infinite;
+    }
+    .mask > .text > .dot:nth-child(2) {
+      animation: wave 0.9s 0.3s ease-in-out infinite;
+    }
+    .mask > .text > .dot:nth-child(3) {
+      animation: wave 0.9s 0.6s ease-in-out infinite;
+    }
+    @keyframes wave {
+      0%,
+      100% {
+        translate: 0 0;
+      }
+      50% {
+        translate: 0 0.175rem;
+      }
+    }
+  </style>
+  <body>
+    <div class="mask">
+      <div class="text">
+        Loading
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="bar">
+        <div class="progress_bar"></div>
+      </div>
+    </div>
+    <div class="contain">
+      <div class="refresh">
+        <svg
+          t="1736844296376"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="4613"
+          width="200"
+          height="200"
+        >
+          <path
+            d="M733.04 379.104a264.112 264.112 0 0 0-468.112 41.76 14.336 14.336 0 0 1-17.968 8.16l-20.256-7.008a12.352 12.352 0 0 1-7.456-16.192 312.112 312.112 0 0 1 556.736-48.56l12.704-44.352a16 16 0 0 1 7.632-9.584l24.752-13.712a14.464 14.464 0 0 1 20.912 16.64l-38.128 132.96a11.136 11.136 0 0 1-13.76 7.632l-132.96-38.128a14.464 14.464 0 0 1-3.04-26.56l24.752-13.712a16 16 0 0 1 12.16-1.392l42.032 12.048z m-447.52 280.352a264.112 264.112 0 0 0 468.112-41.76 14.336 14.336 0 0 1 17.968-8.16l20.256 7.008a12.352 12.352 0 0 1 7.44 16.176c-46.368 118.032-160.8 199.072-290.432 199.072-110.96 0-210.768-59.296-266.304-150.432l-12.704 44.288a16 16 0 0 1-7.616 9.584l-24.752 13.712a14.464 14.464 0 0 1-20.928-16.64l38.128-132.96a11.136 11.136 0 0 1 13.76-7.632l132.976 38.128a14.464 14.464 0 0 1 3.04 26.56l-24.768 13.712a16 16 0 0 1-12.16 1.392l-42.016-12.048z"
+            fill="#2c2c2c"
+            p-id="4614"
+          ></path>
+        </svg>
+      </div>
+      <div class="card">
+        <div class="tree">
+          <svg
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1157.000000pt"
+            height="1280.000000pt"
+            viewBox="0 0 1157.000000 1280.000000"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <metadata>
+              Created by potrace 1.15, written by Peter Selinger 2001-2017
+            </metadata>
+            <g
+              transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+              fill="#344bcb"
+            >
+              <path
+                d="M5330 12245 c-284 -52 -593 -227 -935 -529 -44 -39 -157 -144 -252
                -232 -94 -89 -292 -270 -440 -401 -557 -498 -782 -754 -928 -1058 -153 -318
                -165 -537 -36 -658 82 -77 175 -116 515 -217 250 -74 326 -125 339 -230 18
                -153 -227 -496 -577 -807 -148 -132 -372 -314 -615 -499 -424 -322 -641 -504
@@ -72,16 +272,66 @@
                895 852 728 557 1006 818 1230 1153 172 258 221 455 150 608 -66 142 -185 222
                -445 302 -280 86 -332 104 -374 131 -62 39 -86 80 -86 150 0 105 54 238 169
                411 135 205 327 408 701 741 124 110 338 305 475 433 409 381 575 510 790 614
-               214 104 371 135 550 109z"/>
-               </g>
-                       </svg>
-            </div>
-            <h1 class="title">Merry Christmas</h1>
-            <p class="msg">You completed all your December's tasks so we decided to get you a gift:</p>
-            <p class="msg promo">50% off on your Yearly Premium Plan</p>
-            <button>GET YOUR GIFT</button>
+               214 104 371 135 550 109z"
+              />
+            </g>
+          </svg>
         </div>
-
+        <h1 class="title">Merry Christmas</h1>
+        <p class="msg">
+          You completed all your December's tasks so we decided to get you a
+          gift:
+        </p>
+        <p class="msg promo">50% off on your Yearly Premium Plan</p>
+        <button>GET YOUR GIFT</button>
+      </div>
     </div>
-</body>
+    <script>
+              const contain = document.querySelector(".contain");
+
+      const contains = document.querySelectorAll(".contain > .card > *");
+      const mask = document.querySelector(".mask");
+      const progress = document.querySelector(".mask .bar .progress_bar");
+      const refresh = document.querySelector(".refresh");
+      let processNum = 0
+
+      function progressRun(){
+        if(processNum<=100){
+         processNum++
+        setTimeout(progressRun,12)
+        progress.style.width = `${processNum}%`
+        }else {
+        mask.classList.add('hide');
+        contain.style.transitionDelay = '0.7s'
+        contain.classList.add('display')
+
+        }
+      }
+
+      window.addEventListener('load',     ()=>{
+        processNum = 0
+        progressRun()
+        contains.forEach((item,index)=>{
+            item.style.transitionDelay = `${index * 0.2}s`
+        })
+      }
+)
+      refresh.addEventListener("click", 
+      ()=>{
+
+        //第一步移除现在卡片约，约
+        contain.style.transitionDelay = '0s'
+        contain.classList.remove('display')
+
+        setTimeout(()=>{
+            mask.classList.remove('hide');
+            processNum = 0
+            progressRun()
+        }
+        ,800)
+      }
+
+      );
+    </script>
+  </body>
 </html>
